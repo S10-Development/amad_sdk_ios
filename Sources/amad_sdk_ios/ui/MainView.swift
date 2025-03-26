@@ -52,5 +52,5 @@ public struct MainView: View {
     }
 }
 #Preview {
-    MainView(idApplication: "34")
+    MainView(idApplication: "7")
 }

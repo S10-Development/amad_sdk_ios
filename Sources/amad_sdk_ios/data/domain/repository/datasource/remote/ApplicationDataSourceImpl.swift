@@ -15,7 +15,7 @@ struct ApplicationDataSourceImpl: ApplicationDataSource {
         return if isDemo {
             apiClient.fetchData(from: EndPoints.APPLICATION_SERVICES(id: id).value)
         }else{
-            apiClient.fetchData(baseUrlParams: "https://s10plus.com:8443/ws/", from: EndPoints.APPLICATION_SERVICES(id: id).value)
+            apiClient.fetchData(baseUrlParams: "https://s10plus.com:8443/wsqa/", from: EndPoints.APPLICATION_SERVICES(id: id).value)
         }
     }
     

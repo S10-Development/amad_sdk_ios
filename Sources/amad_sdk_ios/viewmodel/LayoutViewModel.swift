@@ -7,7 +7,7 @@
 
 import Combine
 
-public class LayoutViewModel: ViewModelBase{
+ class LayoutViewModel: ViewModelBase{
     
     @Published var views: [Component] = []
 

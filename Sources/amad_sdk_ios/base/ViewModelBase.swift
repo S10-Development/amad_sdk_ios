@@ -7,7 +7,7 @@
 
 import Combine
 import Foundation
-open class ViewModelBase: ObservableObject {
+ class ViewModelBase: ObservableObject {
     @Published public var isLoading: Bool = false
     @Published public var showedError: Bool = false
     @Published public var showedSuccess: Bool = false
