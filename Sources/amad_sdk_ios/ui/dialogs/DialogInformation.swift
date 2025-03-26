@@ -5,7 +5,7 @@
 //  Created by Pablo Jair Angeles on 06/03/25.
 //
 
-public struct DialogInformation{
+ struct DialogInformation{
         var title:String =  Constants.EMPTY_STRING
         var message:String = Constants.EMPTY_STRING
         var onClickButton1: (() -> Void)?

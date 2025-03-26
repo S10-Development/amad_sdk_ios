@@ -5,7 +5,7 @@
 //  Created by Pablo Jair Angeles on 23/09/24.
 //
 
-public struct Component :Codable,Sendable{
+ struct Component :Codable,Sendable{
     let type: TypeComponent
     var properties: Properties
     let UUID: String

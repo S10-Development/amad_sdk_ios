@@ -6,14 +6,14 @@
 //
 import SwiftUI
 
-public struct AsyncProgressImage: View {
+ struct AsyncProgressImage: View {
     let url: String
     
-    public init(url: String) {
+     init(url: String) {
         self.url = url
     }
     
-    public var body: some View {
+     var body: some View {
         if(url.isEmpty){
             Image(.itemDefault) // Muestra un icono predeterminado en caso de error
                 .resizable()

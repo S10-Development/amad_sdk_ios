@@ -9,7 +9,7 @@ import Foundation
 
 import Foundation
 
-public final class CacheManager:@unchecked Sendable {
+ final class CacheManager:@unchecked Sendable {
      public  static let shared = CacheManager()
 
     // Serial queue para proteger el acceso concurrente.

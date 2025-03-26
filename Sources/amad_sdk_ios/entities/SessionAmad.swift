@@ -6,7 +6,7 @@
 //
 
 
-public struct SessionAmad: Codable, Sendable {
+ struct SessionAmad: Codable, Sendable {
     public let userId: String
     public let token: String
     public let name:String

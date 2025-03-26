@@ -7,7 +7,7 @@
 
 
 import SwiftUI
-public struct LayoutView: View {
+ struct LayoutView: View {
     @State var navigateOtherView: Bool = false
     @State private var selectedNewView:String  = Constants.EMPTY_STRING
     @Environment(\.openURL) var openURL
@@ -17,7 +17,7 @@ public struct LayoutView: View {
         layoutViewModel.views = views
     }
     
-    public var body: some View {
+     var body: some View {
         NavigationStack {
             Spacer()
             

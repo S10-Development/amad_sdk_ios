@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-public class SendAnalyticsUseCase: UseCaseBase<EventAnalytics,String> {
+ class SendAnalyticsUseCase: UseCaseBase<EventAnalytics,String> {
     
     private let applicationRepository = ApplicationRepository()
     

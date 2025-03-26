@@ -65,7 +65,7 @@ struct LoadingDialogModifier: ViewModifier {
     }
 }
 extension View {
-    public func showLoadingDialog( _ isPresented: Binding<Bool>, message: String = "Cargando...") -> some View {
+     func showLoadingDialog( _ isPresented: Binding<Bool>, message: String = "Cargando...") -> some View {
         return self.modifier(LoadingDialogModifier(isPresented: isPresented, message:message))
     }
 }

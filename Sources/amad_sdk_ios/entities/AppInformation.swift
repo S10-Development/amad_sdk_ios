@@ -6,7 +6,7 @@
 //
 
 import Foundation
-public struct AppInformation: Codable,Sendable {
+ struct AppInformation: Codable,Sendable {
     public var appId: String?=""
     public var views: [ViewComponent]
     public var status: Int
