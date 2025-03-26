@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 import AVFoundation
 
-public class ApplicationViewModel: ViewModelBase {
+ class ApplicationViewModel: ViewModelBase {
     @Published public var application: AppInformation = AppInformation(appId: "", views: [], status: 0, preconfiguration: .init())
     
     @Published public var urlAudio: String?
     
-    public func loadApplication(id: String) {
+     func loadApplication(id: String) {
         showLoading()
         GetApplicationUseCase().execute(params: id)
             .receive(on: DispatchQueue.main)

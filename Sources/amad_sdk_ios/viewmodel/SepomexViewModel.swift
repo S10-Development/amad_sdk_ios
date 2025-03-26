@@ -10,14 +10,11 @@ import Foundation
 import UIKit
 import AVFoundation
 
-public class SepomexViewModel: ViewModelBase {
+ class SepomexViewModel: ViewModelBase {
     @Published public var states:[StateResponse] = []
     @Published public var municipality:[Municipality] = []
     @Published public var neighborhood:[Neighborhood] = []
     @Published public var items:[LocationDropdowItem] = []
-    
-    
-    
     func getStates(){
         showLoading()
         GetStatesUseCase()
