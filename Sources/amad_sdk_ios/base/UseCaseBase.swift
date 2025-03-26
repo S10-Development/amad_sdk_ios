@@ -8,35 +8,35 @@
 import Foundation
 import Combine
 
-protocol UseCaseDefinition {
+ protocol UseCaseDefinition {
     associatedtype Input
     associatedtype Output
     
     func execute(params: Input?) -> AnyPublisher<Output, APIError>
 }
 
-open class UseCaseBase<Input, Output>: UseCaseDefinition {
+public class UseCaseBase<Input, Output>: UseCaseDefinition {
    
     
     
-    typealias Input = Input
-    typealias Output = Output
+    public typealias Input = Input
+   public typealias Output = Output
     
     
-    public init() {}
+     public init() {}
    
     
-    open func execute(params: Input?) -> AnyPublisher<Output, APIError> {
+     public func execute(params: Input?) -> AnyPublisher<Output, APIError> {
         fatalError("execute() not implemented")
     }
     
 }
 
-protocol UseCaseDefinitionWhitoutParams {
+public protocol UseCaseDefinitionWhitoutParams {
     associatedtype Output
     func execute() -> AnyPublisher<Output, APIError>
 }
-open class UseCaseBaseWhitoutParams<Output>: UseCaseDefinitionWhitoutParams {
+ class UseCaseBaseWhitoutParams<Output>: UseCaseDefinitionWhitoutParams {
     typealias Output = Output
     public init() {}
     open func execute() -> AnyPublisher<Output, APIError> {

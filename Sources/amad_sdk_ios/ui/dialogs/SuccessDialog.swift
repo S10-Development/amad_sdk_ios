@@ -90,7 +90,7 @@ struct SuccessDialogModifier: ViewModifier {
     }
 }
 extension View {
-    public func showSuccessDialog(
+     func showSuccessDialog(
         _ isPresented: Binding<Bool>,
         by dialogInformation: DialogInformation = DialogInformation(title: "Todo fue correcto", message: "Ejemplo de success")
     ) -> some View {

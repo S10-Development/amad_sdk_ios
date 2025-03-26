@@ -90,7 +90,7 @@ struct ErrorDialogModifier: ViewModifier {
     }
 }
 extension View {
-    public func showErrorDialog(
+     func showErrorDialog(
         _ isPresented: Binding<Bool>,
         by dialogInformation: DialogInformation = DialogInformation(title: "ERROR", message: "Ejemplo de error")
     ) -> some View {

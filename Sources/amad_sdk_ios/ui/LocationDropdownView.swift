@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-public struct LocationDropdownView: View {
+ struct LocationDropdownView: View {
     @StateObject var viewmodel = SepomexViewModel()
     @State private var isExpanded: Bool = false
     @State private var selectedOption: LocationDropdowItem = .init(name: "Selecciona un estado", id: 0)
     @Binding var  locationInfo: LocationInformation
     
-      public var body: some View {
+       var body: some View {
           DisclosureGroup(selectedOption.name, isExpanded: $isExpanded) {
           VStack {
               

@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-public class GetApplicationUseCase: UseCaseBase<String,AppInformation> {
+ class GetApplicationUseCase: UseCaseBase<String,AppInformation> {
     
     private let applicationRepository = ApplicationRepository()
     public override func execute(params request: String?) -> AnyPublisher<AppInformation,APIError> {

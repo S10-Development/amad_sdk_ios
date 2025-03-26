@@ -9,7 +9,7 @@
 
 import Foundation
 
-public class JsonMock {
+ class JsonMock {
     public static func parseJSON() -> [Component] {
         let jsonString = """
         [

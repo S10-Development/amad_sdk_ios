@@ -8,7 +8,7 @@
 import JWTDecode
 import Foundation
 
-public final class SessionManager: @unchecked Sendable {
+ final class SessionManager: @unchecked Sendable {
     
     // Instancia Singleton
     public static let shared = SessionManager()
