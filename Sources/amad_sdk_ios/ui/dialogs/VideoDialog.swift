@@ -67,7 +67,7 @@ struct VideoDialogModifier: ViewModifier {
     }
 }
 extension View {
-    public func ShowVideoDialogDialog(
+     func ShowVideoDialogDialog(
         _ isPresented: Binding<Bool>,
         by url:String = Constants.EMPTY_STRING
     ) -> some View {
