@@ -4,7 +4,7 @@ import SwiftUI
  struct PersonalInfoView: View {
 
     var personalInformation: PersonalInformationModel?
-    var fisrtPage:[Component] = []
+    var fisrtPage:ViewComponent = createDefaultView()
     @State private var selectedLocation: String = ""
     @State private var phone: String = ""
     @State private var email: String = ""
@@ -57,7 +57,7 @@ import SwiftUI
          }
          .navigationDestination(isPresented: $navigateToNextView) {
              
-             LayoutView(views: fisrtPage)
+             LayoutView(view: fisrtPage)
 
          }
     }

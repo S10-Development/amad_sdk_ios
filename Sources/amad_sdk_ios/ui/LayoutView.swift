@@ -9,50 +9,55 @@
 import SwiftUI
  struct LayoutView: View {
     @State var navigateOtherView: Bool = false
+     @State var scrollHeigth: CGFloat = Constants.higthWeb.toCGFloat()
+
     @State private var selectedNewView:String  = Constants.EMPTY_STRING
     @Environment(\.openURL) var openURL
     @StateObject private var viewModel: ApplicationViewModel = ApplicationViewModel()
     @ObservedObject private var layoutViewModel: LayoutViewModel = LayoutViewModel()
-    public init(views: [Component] = []) {
-        layoutViewModel.views = views
+     public init(view:ViewComponent) {
+         layoutViewModel.view = view
+
     }
     
      var body: some View {
         NavigationStack {
             Spacer()
+            ScrollView{
+                GeometryReader { geometry in
+
+                    ForEach(layoutViewModel.view.component, id: \.UUID) { view in
             
-            GeometryReader { geometry in
+                        let scaleWidth: CGFloat = view.properties.size.widthToScale(from: geometry.frame(in: .local).width)
+                        let scalelHeight: CGFloat = view.properties.size.heightToScale(from: geometry.frame(in: .local).height)
+                        
+                        let scaleX: CGFloat = view.properties.position.toXScale(from: geometry.frame(in: .local).width)
+                        
+                        let scaleY: CGFloat = view.properties.position.toYScale(from: geometry.frame(in: .local).height)
+                        
+                        let _ = print("======== COMPONENT \(view.UUID) (\(view.type)) ====")
+                        let _ = print("geometry->height: \(geometry.frame(in: .local).height)")
 
-                ForEach(layoutViewModel.views, id: \.UUID) { view in
-                    
-        
-                    let scaleWidth: CGFloat = view.properties.size.widthToScale(from: geometry.frame(in: .local).width)
-                    let scalelHeight: CGFloat = view.properties.size.heightToScale(from: geometry.frame(in: .local).height)
-                    
-                    let scaleX: CGFloat = view.properties.position.toXScale(from: geometry.frame(in: .local).width)
-                    
-                    let scaleY: CGFloat = view.properties.position.toYScale(from: geometry.frame(in: .local).height)
-                    
-                    let _ = print("======== COMPONENT \(view.UUID) (\(view.type)) ====")
-
-                    let _ = print("original Position->x: \(view.properties.position.x), y: \(view.properties.position.y)")
-                    let _ = print("original size-> w: \(view.properties.size.width), h: \(view.properties.size.height)")
-                    let _ = print("scaleX: \(scaleX), scaleY: \(scaleY), scaleWidth: \(scaleWidth), scalelHeight: \(scalelHeight)")
-                    let _ = print("================================================")
-               createView(view)
-                        .frame(width: scaleWidth, height: scalelHeight)
-                        .offset(x: scaleX, y: scaleY)
-                        .onTapGesture {
-                            self.clickAction(view)
-                        }
-                }
-                 
+                        let _ = print("original Position->x: \(view.properties.position.x), y: \(view.properties.position.y)")
+                        let _ = print("original size-> w: \(view.properties.size.width), h: \(view.properties.size.height)")
+                        let _ = print("scaleX: \(scaleX), scaleY: \(scaleY), scaleWidth: \(scaleWidth), scalelHeight: \(scalelHeight)")
+                        let _ = print("================================================")
+                   createView(view)
+                            .frame(width: scaleWidth, height: scalelHeight)
+                            .offset(x: scaleX, y: scaleY)
+                            .onTapGesture {
+                                self.clickAction(view)
+                            }
+                    }
+                     
+                }.frame(height: self.layoutViewModel.view.properties.height)
+                    .background(self.layoutViewModel.view.properties.backgroundColor)
             }
         }
         .navigationDestination(isPresented: $navigateOtherView) {
             if let application = CacheManager.shared.getData(forKey: CacheManager.shared.APPLICATION_KEY, as: AppInformation.self),
                let newView = application.getViewByID(selectedNewView) {
-                LayoutView(views: newView.component)
+                LayoutView(view: newView)
             } else {
                 Text("Vista no encontrada")
             }
@@ -62,7 +67,7 @@ import SwiftUI
     private  func createNewView(){
         if let application = CacheManager.shared.getData(forKey: CacheManager.shared.APPLICATION_KEY, as: AppInformation.self),
            let newView = application.getViewByID(selectedNewView) {
-            layoutViewModel.views = newView.component
+            layoutViewModel.view = newView
         } else {
         }
     }
@@ -135,5 +140,5 @@ import SwiftUI
 
 
 #Preview {
-    LayoutView(views:JsonMock.parseJSON())
+    LayoutView(view:JsonMock.parseJSON())
 }

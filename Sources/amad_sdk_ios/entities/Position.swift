@@ -30,7 +30,7 @@ struct Position :Codable,Sendable{
     
     
     @MainActor func toYScale(from:CGFloat)->CGFloat{
-        let scale = (CGFloat(y) * from) / CGFloat(Constants.higthWeb)
+        let scale = (CGFloat(y) * from) / from
         return scale
     }
     

@@ -24,9 +24,11 @@ public struct MainView: View {
         NavigationStack{
             HStack{
                 if (viewmodel.application.personalInformation?.active ?? false ) {
-                    PersonalInfoView(personalInformation: viewmodel.application.personalInformation,fisrtPage: viewmodel.application.getFirstView())
+                    PersonalInfoView(
+                        personalInformation: viewmodel.application.personalInformation,
+                        fisrtPage: viewmodel.application.getFirstView())
                 }else{
-                    LayoutView(views: viewmodel.application.getFirstView())
+                    LayoutView(view: viewmodel.application.getFirstView())
                         .ShowVideoDialogDialog(
                                 $isVideoDialogShown,  // Se pasa como Binding
                                 by: viewmodel.application.preconfiguration.welcomeVideo
