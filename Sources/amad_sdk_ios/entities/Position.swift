@@ -23,8 +23,8 @@ struct Position :Codable,Sendable{
         return CGFloat(y+1)
     }
     
-    @MainActor func toXScale(from:CGFloat)->CGFloat{
-        let scale = (CGFloat(x) * from) / CGFloat(Constants.widthWeb)
+    @MainActor func toXScale(from:CGFloat,scaleTo:CGFloat = CGFloat(Constants.widthWeb))->CGFloat{
+        let scale = (CGFloat(x) * from) / scaleTo
         return scale
     }
     

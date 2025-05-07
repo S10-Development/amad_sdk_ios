@@ -26,13 +26,13 @@ struct SizeComponent :Codable,Sendable{
         return CGFloat(height)
     }
     
-    @MainActor public func widthToScale(from:CGFloat ) -> CGFloat {
-        let scaleWidth = (CGFloat(width) * from) / CGFloat(Constants.widthWeb)
+    @MainActor public func widthToScale(from:CGFloat,scaleTo:CGFloat = CGFloat(Constants.widthWeb)) -> CGFloat {
+        let scaleWidth = (CGFloat(width) * from) / scaleTo
         return scaleWidth
     }
     
-    @MainActor public func heightToScale(from:CGFloat) -> CGFloat {
-        let scaleHeight = (CGFloat(height) * from) / CGFloat(Constants.higthWeb)
+    @MainActor public func heightToScale(from:CGFloat,scaleTo:CGFloat = CGFloat(Constants.higthWeb)) -> CGFloat {
+        let scaleHeight = (CGFloat(height) * from) / scaleTo
         return scaleHeight
     }
     @MainActor public func widthToScaleCGFloat() -> CGFloat {

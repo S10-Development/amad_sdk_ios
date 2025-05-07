@@ -19,4 +19,5 @@ public class Constants {
     static public let widthWeb = 400
     static public let ZERO: Int = 0
     static public let ZERO_FLOAT: CGFloat = 0.0
+    static public let ZERO_DOUBLE: Double = 0.0
 }
