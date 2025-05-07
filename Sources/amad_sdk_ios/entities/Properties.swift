@@ -33,12 +33,13 @@ struct Properties :Codable,Sendable {
         self.itemCarousel = itemCarousel
         
     }
-    init(position: Position, size: SizeComponent, text: String,itemCarousel: Array<ItemCarousel>,base64Image:String) {
+    init(position: Position, size: SizeComponent, text: String,itemCarousel: Array<ItemCarousel>,base64Image:String,imageSize:SizeComponent? = nil) {
         self.position = position
         self.size = size
         self.text = text
         self.itemCarousel = itemCarousel
         self.base64Image = base64Image
+        self.imageSize = imageSize
         
     }
     

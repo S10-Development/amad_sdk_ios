@@ -23,4 +23,8 @@ struct ApplicationRepository {
     public func sendAnalytics(event: EventAnalytics) -> AnyPublisher<BaseResponse<String>, APIError> {
         return applicationDataSource.sendAnalytics(event: event)
     }
+    
+    func load(event:TokenRequestModel) -> AnyPublisher<BaseResponse<String?>, APIError> {
+        return applicationDataSource.load(event: event)
+    }
 }

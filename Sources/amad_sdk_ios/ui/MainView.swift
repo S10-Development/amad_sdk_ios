@@ -26,7 +26,9 @@ public struct MainView: View {
                 if (viewmodel.application.personalInformation?.active ?? false ) {
                     PersonalInfoView(
                         personalInformation: viewmodel.application.personalInformation,
-                        fisrtPage: viewmodel.application.getFirstView())
+                        fisrtPage: viewmodel.application.getFirstView(),
+                        idApplication: self.idApplication
+                    )
                 }else{
                     LayoutView(view: viewmodel.application.getFirstView())
                         .ShowVideoDialogDialog(
@@ -48,7 +50,7 @@ public struct MainView: View {
                 isVideoDialogShown = viewmodel.application.preconfiguration.welcomeVideo.isNotEmpty()
 
             }
-            .navigationBarBackButtonHidden(true) // Oculta el botón "Back" por defecto
+            .navigationBarBackButtonHidden(true) 
         }
      
     }
