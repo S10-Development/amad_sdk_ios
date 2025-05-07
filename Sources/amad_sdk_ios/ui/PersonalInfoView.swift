@@ -8,16 +8,20 @@ struct PersonalInfoView: View {
     var idApplication: String = Constants.EMPTY_STRING
     @State private var validInputType:[PersonalInfoFieldType:Bool] = [:]
     @ObservedObject private var viewmodel: PersonalInformationViewModel = PersonalInformationViewModel()
+    var onComplete: () -> Void      // ← callback al terminar de guardar
 
     init(
         personalInformation: PersonalInformationModel? = nil,
         fisrtPage: ViewComponent,
-        idApplication: String
+        idApplication: String,
+        onComplete: @escaping () -> Void      // ← callback al terminar de guardar
+
     ) {
         self.personalInformation = personalInformation
         self.fisrtPage = fisrtPage
         self.idApplication = idApplication
-        
+        self.onComplete = onComplete
+
         viewmodel.idApplication = idApplication
     }
 
@@ -64,11 +68,6 @@ struct PersonalInfoView: View {
                 .padding(.horizontal)
             }
             .padding(.top)
-        }
-        .navigationDestination(
-            isPresented: self.$viewmodel.navigateToNextView
-        ) {
-            LayoutView(view: fisrtPage)
         }
         .navigationBarBackButtonHidden(true)
 
@@ -159,6 +158,6 @@ struct PersonalInfoView: View {
         ){
             return
         }
-        self.viewmodel.sendPersonalInformation()
+        self.viewmodel.sendPersonalInformation(onChange: onComplete)
     }
 }

@@ -12,6 +12,8 @@ public class SendInformationUseCase: UseCaseBase<TokenRequestModel, String?> {
     private let repository = ApplicationRepository()
 
     public override func execute(params request: TokenRequestModel?) -> AnyPublisher<String?, APIError> {
+        CacheManager.shared.saveData(Constants.EMPTY_STRING, forKey: CacheManager.shared.APPLICATION_SESION)               
+
         return repository
             .load(event: request!)
             .tryMap { response in
@@ -25,7 +27,7 @@ public class SendInformationUseCase: UseCaseBase<TokenRequestModel, String?> {
                         )
                     )
                 }
-                // 2) Devuelve el String? que viene en response.data
+                CacheManager.shared.saveData(response.token, forKey: CacheManager.shared.APPLICATION_SESION)                // 2) Devuelve el String? que viene en response.data
                 return response.data
             }
             .mapError { error in

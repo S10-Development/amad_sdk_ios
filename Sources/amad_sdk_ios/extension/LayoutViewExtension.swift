@@ -32,7 +32,7 @@ extension LayoutView {
         let scaleX = component.properties.position.toXScale(from: width)
         let scaleY = component.properties.position.toYScale(from: height)
         
-        print("======== COMPONENT \(component.UUID) (\(component.type)) ====")
+        /*print("======== COMPONENT \(component.UUID) (\(component.type)) ====")
         print("geometry->height: \(proxy.frame(in: .local).height)")
         
         print(
@@ -44,7 +44,7 @@ extension LayoutView {
         print(
             "scaleX: \(scaleX), scaleY: \(scaleY), scaleWidth: \(scaleWidth), scalelHeight: \(scaleHeight)"
         )
-        print("================================================")
+        print("================================================")*/
         
         return ScaleComponent(
             width:  scaleWidth,
@@ -145,11 +145,12 @@ extension LayoutView {
         else {
             // Si falla cualquiera de los dos pasos, salimos sin hacer nada
             return
-        }
-        guard !viewModel.navigateOtherView else { return }
+        }        
         
         // 2. Asignamos la nueva vista
-        viewModel.view = newView
+        viewModel.sendNewView(viewComponent: newView)
+
+      
     }
 
 }

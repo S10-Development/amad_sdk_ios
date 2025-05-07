@@ -18,7 +18,7 @@ public enum EndPoints {
         case .LOAD:
             return "rest/action/load"
         case .SEND_CLICK:
-            return "rest/action/click/"
+            return "rest/action/click"
         }
     }
 }

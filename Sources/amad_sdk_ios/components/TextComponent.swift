@@ -20,7 +20,6 @@ struct TextComponent: View {
                 onTap?()
             }
 
-        let _ = print("TextComponent-> \(self.component.properties)")
     }
     
 

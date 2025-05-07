@@ -25,8 +25,6 @@ import AVFoundation
                     self.hideLoading()
                     self.states = value
                     self.items = value.map { .init(name: $0.estado, id: $0.idEstado) }
-
-                    print("Loaded application:", value)
                 }
             )
             .store(in: &subscriptions)
@@ -36,6 +34,7 @@ import AVFoundation
         showLoading()
         GetNeighborhoodUseCase()
             .execute(params: id)
+            .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion:completionError,
                 receiveValue: {  value in
@@ -43,8 +42,6 @@ import AVFoundation
 
                     self.neighborhood = value
                     self.items = value.map { .init(name: $0.colonia, id: $0.idColonia) }
-
-                    print("Loaded application:", value)
                 }
             )
             .store(in: &subscriptions)
@@ -53,6 +50,7 @@ import AVFoundation
     func getMunicipality(id:Int){
         GetMunicipalityUseCase()
             .execute(params: id)
+            .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion:completionError,
                 receiveValue: {

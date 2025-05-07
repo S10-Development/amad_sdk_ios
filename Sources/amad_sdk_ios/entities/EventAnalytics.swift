@@ -5,7 +5,11 @@
 //  Created by Pablo Jair Angeles on 09/12/24.
 //
 
- struct EventAnalytics: Codable {
-     var  id: String
-     var otherInformation: String
+public struct EventAnalytics: Codable,Sendable {
+    let  id: String
+    let otherInformation: String
+    enum CodingKeys: String, CodingKey {
+        case id      = "id_action"
+        case otherInformation = "other_information"
+    }
 }

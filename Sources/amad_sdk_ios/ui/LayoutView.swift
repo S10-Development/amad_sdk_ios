@@ -15,22 +15,15 @@ struct LayoutView: View {
         layoutViewModel.view = view
     }
     var body: some View {
-        NavigationStack {
-            VStack{
-                makeHeader()
-                makeBody()
-                
-                Spacer()
-                makeFooter()
-            }
-            .navigationBarBackButtonHidden(true)
+        VStack{
+            makeHeader()
+            makeBody()
+            
+            Spacer()
+            makeFooter()
+        }
+        .showLoadingDialog($layoutViewModel.isLoading)
 
-        }
-        .navigationDestination(
-            isPresented: $layoutViewModel.navigateOtherView
-        ) {
-            LayoutView(view: layoutViewModel.view)
-        }
         
        
     }
@@ -66,7 +59,6 @@ struct LayoutView: View {
              }
              .frame(height: self.layoutViewModel.view.properties.height)
              .background(self.layoutViewModel.view.properties.backgroundColor)
-             .navigationBarBackButtonHidden(true)
 
          }
      }

@@ -15,6 +15,8 @@ public class Constants {
     static public let COLOR_TEXT: String = "FFFFFF"
     static public let FONT_SIZE: Int = 14
     static public let TWO_CGFLOAT: CGFloat = 2
+    static public let TWO: Int = 2
+    static public let ONE: Int = 1
     static public let higthWeb = 800
     static public let widthWeb = 400
     static public let ZERO: Int = 0

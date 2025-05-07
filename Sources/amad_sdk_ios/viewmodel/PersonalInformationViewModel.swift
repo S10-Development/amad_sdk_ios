@@ -20,7 +20,6 @@ class PersonalInformationViewModel: ViewModelBase {
     @Published  var phone: String = Constants.EMPTY_STRING
     @Published  var email: String = Constants.EMPTY_STRING
     @Published  var name: String = Constants.EMPTY_STRING
-    @Published  var navigateToNextView: Bool = false
     @Published  var idApplication: String = Constants.EMPTY_STRING
 
     override init() {
@@ -39,12 +38,12 @@ class PersonalInformationViewModel: ViewModelBase {
     }
 
     @MainActor
-    func sendPersonalInformation() {
+    func sendPersonalInformation(onChange: @escaping()->Void ) {
         showLoading()
         
         Task { @MainActor in
             self.makeTokenRequest()
-            self.performSend()
+            self.performSend(onChange: onChange)
         }
    
     
@@ -52,15 +51,15 @@ class PersonalInformationViewModel: ViewModelBase {
     }
  
     @MainActor
-    private func performSend(){
+    private func performSend(onChange: @escaping()->Void ){
         SendInformationUseCase().execute(params: tokenRequestModel)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion:makeCompletionError {
-                    self.navigateToNextView.toggle()
+                    onChange()
                 },
                 receiveValue: {  value in
-                    self.navigateToNextView.toggle()
+                   onChange()
                 }
             )
             .store(in: &subscriptions)

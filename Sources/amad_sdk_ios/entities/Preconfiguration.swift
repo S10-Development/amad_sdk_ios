@@ -13,4 +13,5 @@ public struct Preconfiguration :Codable,Sendable{
     var urlAnalytics: String = ""
     var urlSound: String = ""
     var welcomeVideo:String = ""
+    var tagAnalyticOpen:String? = ""
 }
