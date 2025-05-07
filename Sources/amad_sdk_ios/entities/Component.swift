@@ -21,5 +21,7 @@ public enum TypeComponent: Int, Codable,Sendable {
     case carousel = 4
     case dialog = 5
     case video = 6
-    case unknown = 7
+    case s10plus = 8
+
+    case unknown = 999
 }

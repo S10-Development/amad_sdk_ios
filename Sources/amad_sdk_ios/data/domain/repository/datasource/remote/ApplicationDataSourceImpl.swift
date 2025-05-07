@@ -24,4 +24,8 @@ struct ApplicationDataSourceImpl: ApplicationDataSource {
     }
     
     
+    func load(event:TokenRequestModel) -> AnyPublisher<BaseResponse<String?>, APIError> {
+        return apiClient.fetchData(from: EndPoints.LOAD.value, method: .post, body: event)
+    }
+    
 }
