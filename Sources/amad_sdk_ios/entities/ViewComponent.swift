@@ -11,7 +11,7 @@ public struct ViewComponent :Codable,Sendable{
     let id: String
     let mainView: Bool
     let nameView: String
-    let component: [Component]
+    var component: [Component]
     var header: Header? = Header()
     var footer: Footer? = Footer()
     var properties:PropertiesView
@@ -44,6 +44,23 @@ public struct ViewComponent :Codable,Sendable{
             .decodeIfPresent(PropertiesView.self, forKey: .properties)
         ?? PropertiesView.defaultProperties
     }
+    
+    // … tus propiedades …
+
+    /// Ordena in-place el array `component` por posición (y ascendente, luego x ascendente).
+    /// Ordena in-place los componentes solo por su posición y (de menor a mayor).
+      mutating func sortComponentsByY() {
+          component.sort { lhs, rhs in
+              lhs.properties.position.y < rhs.properties.position.y
+          }
+      }
+      
+      /// O, si prefieres no mutar, un computed property:
+      var componentsSortedByY: [Component] {
+          component.sorted {
+              $0.properties.position.y < $1.properties.position.y
+          }
+      }
 }
 
 func createDefaultView() -> ViewComponent {
@@ -56,4 +73,6 @@ func createDefaultView() -> ViewComponent {
         footer: createDefaultFooter(),
         properties:   PropertiesView.defaultProperties
     )
+    
+    
 }

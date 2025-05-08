@@ -18,7 +18,7 @@ class ViewModelBase: ObservableObject {
     
     public func hideLoading() {
         Just(false)
-            .delay(for: .seconds(1), scheduler: DispatchQueue.global())
+            .delay(for: .seconds(0), scheduler: DispatchQueue.main)
             .receive(
                 on: DispatchQueue.main
             ) // Asegura que la actualización sea en el hilo principal
@@ -26,7 +26,7 @@ class ViewModelBase: ObservableObject {
     }
     public func showLoading() {
         Just(true)
-            .delay(for: .seconds(0), scheduler: DispatchQueue.global())
+            .delay(for: .seconds(0), scheduler: DispatchQueue.main)
             .receive(
                 on: DispatchQueue.main
             ) // Asegura que la actualización sea en el hilo principal

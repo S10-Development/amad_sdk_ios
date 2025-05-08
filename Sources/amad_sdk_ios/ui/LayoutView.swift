@@ -7,22 +7,34 @@
 
 
 import SwiftUI
+import Lottie
 struct LayoutView: View {
     @Environment(\.openURL) var openURL
     @StateObject private var viewModel: ApplicationViewModel = ApplicationViewModel()
     @ObservedObject private var layoutViewModel: LayoutViewModel = LayoutViewModel()
     public init(view:ViewComponent) {
-        layoutViewModel.view = view
+        layoutViewModel.sendNewView(viewComponent: view)
     }
     var body: some View {
         VStack{
-            makeHeader()
-            makeBody()
-            
-            Spacer()
-            makeFooter()
+            if(layoutViewModel.isLoading){
+                
+                LottieView(animation: .named("loader", bundle: .module))
+                    .playing()
+                    .looping()
+                    .resizable()
+                    .frame(width: 150, height: 100)
+                    .scaledToFill()
+            }else {
+                makeHeader()
+                makeBody()
+                
+                Spacer()
+                makeFooter()
+            }
+        }.onAppear(){
+            print("Apper")
         }
-        .showLoadingDialog($layoutViewModel.isLoading)
 
         
        
@@ -57,7 +69,7 @@ struct LayoutView: View {
                      }
                  }
              }
-             .frame(height: self.layoutViewModel.view.properties.height)
+             .frame(height: self.layoutViewModel.view.properties.getHeight())
              .background(self.layoutViewModel.view.properties.backgroundColor)
 
          }

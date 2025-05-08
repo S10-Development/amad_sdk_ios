@@ -32,7 +32,7 @@ extension LayoutView {
         let scaleX = component.properties.position.toXScale(from: width)
         let scaleY = component.properties.position.toYScale(from: height)
         
-        /*print("======== COMPONENT \(component.UUID) (\(component.type)) ====")
+        print("======== COMPONENT \(component.UUID) (\(component.type)) ====")
         print("geometry->height: \(proxy.frame(in: .local).height)")
         
         print(
@@ -44,7 +44,7 @@ extension LayoutView {
         print(
             "scaleX: \(scaleX), scaleY: \(scaleY), scaleWidth: \(scaleWidth), scalelHeight: \(scaleHeight)"
         )
-        print("================================================")*/
+        print("================================================")
         
         return ScaleComponent(
             width:  scaleWidth,

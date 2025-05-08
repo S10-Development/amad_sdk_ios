@@ -27,6 +27,6 @@ public struct ImageComponent: View {
 
 #Preview {
     
-    let component:Component =  Component(type: TypeComponent.text, properties: Properties(position: Position(x: 0, y: 0), size: SizeComponent(width: 400, height: 200), text: "Ejemplo 2", itemCarousel: [],base64Image: "https://picsum.photos/200"), UUID: "", actions: nil)
+    let component:Component =  Component(type: TypeComponent.text, properties: Properties(position: Position(x: 0, y: 0), size: SizeComponent(width: 20, height: 20), text: "Ejemplo 2", itemCarousel: [],base64Image: "https://picsum.photos/200"), UUID: "", actions: nil)
     ImageComponent(component: component)
 }

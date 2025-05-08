@@ -55,10 +55,10 @@ class LayoutViewModel: ViewModelBase {
     /// Cambia la vista actual y resetea navegación
     func sendNewView(viewComponent: ViewComponent) {
         showLoading()
-        startCountdown(seconds:Constants.ONE) {
-            self.hideLoading()
-        }
+               
+        self.hideLoading()
         self.view = viewComponent
+
       
     }
 }

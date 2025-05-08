@@ -30,6 +30,11 @@ public struct PropertiesView: Codable,Sendable {
         Color(hex: background)
     }
     
+    public func getHeight() -> CGFloat {
+        let minimumHeight = CGFloat(Constants.higthWeb)
+        return max(height, minimumHeight)
+    }
+    
     public static let defaultProperties = PropertiesView(
             background: "#FFFFFF",
             width: 0,
