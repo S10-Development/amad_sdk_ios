@@ -32,7 +32,10 @@ struct LayoutView: View {
                 Spacer()
                 makeFooter()
             }
-        }.onAppear(){
+        }.navigationDestination(isPresented: $layoutViewModel.navigateWebView, destination: {
+            CustomWebView(url: layoutViewModel.urlWebView)
+        })
+        .onAppear(){
             print("Apper")
         }
 

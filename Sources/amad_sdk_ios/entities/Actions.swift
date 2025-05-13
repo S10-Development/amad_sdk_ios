@@ -10,4 +10,5 @@ public struct Actions:Codable ,Sendable{
     var openWebView:String?
     var openSections: String?
     var showBySchedule: [ShowBySchedule?]
+    var showUrlInBrowser: Bool? = false 
 }

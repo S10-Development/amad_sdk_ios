@@ -113,6 +113,12 @@ extension LayoutView {
         
         if let webURLString = component.actions?.openWebView,
            let url = URL(string: webURLString) {
+            if(component.actions?.showUrlInBrowser ?? false ){
+                layoutViewModel.navigateWebView = true
+                layoutViewModel.urlWebView = webURLString
+
+                return
+            }
             UIApplication.shared.open(url)
             return
         }
