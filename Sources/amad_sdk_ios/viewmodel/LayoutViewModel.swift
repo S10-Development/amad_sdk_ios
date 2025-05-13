@@ -13,6 +13,8 @@ class LayoutViewModel: ViewModelBase {
     // MARK: - Propiedades de navegación
     @Published var view: ViewComponent = createDefaultView()
     @Published var navigateOtherView: Bool = false
+    @Published var navigateWebView: Bool = false
+    @Published var urlWebView: String = ""
     
     // MARK: - Countdown
     @Published var remainingSeconds: Int = 0

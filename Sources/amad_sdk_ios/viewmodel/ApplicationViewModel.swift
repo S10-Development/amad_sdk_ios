@@ -31,7 +31,7 @@ class ApplicationViewModel: ViewModelBase {
                 receiveValue: {  value in
                     self.setupData(application: value)
                   
-                    //self?.playAudio(application: value)
+                    self.playAudio(application: value)
                     self.hideLoading()
                     onFinishLoad()
                 }
