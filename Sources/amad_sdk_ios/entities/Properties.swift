@@ -6,7 +6,7 @@
 //
 
 import CoreFoundation
-import SwiftUICore
+import SwiftUI
 
 struct Properties :Codable,Sendable {
     var position: Position

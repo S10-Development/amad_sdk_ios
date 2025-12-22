@@ -5,7 +5,7 @@
 //  Created by Pablo Jair Angeles on 30/10/24.
 //
 
-import SwiftUICore
+import SwiftUI
 
 extension GeometryProxy {
     

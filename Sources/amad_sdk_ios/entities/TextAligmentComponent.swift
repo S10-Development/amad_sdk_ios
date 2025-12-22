@@ -5,7 +5,7 @@
 //  Created by Pablo Jair Angeles on 24/09/24.
 //
 
-import SwiftUICore
+import SwiftUI
 
 
 enum TextAligmentComponent: String, Codable,Sendable {

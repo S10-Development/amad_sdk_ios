@@ -5,7 +5,7 @@
 //  Created by Pablo Jair Angeles on 23/09/24.
 //
 
-import SwiftUICore
+import SwiftUI
 import UIKit
 struct Position :Codable,Sendable{
     let x:Float
